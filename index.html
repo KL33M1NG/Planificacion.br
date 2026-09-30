@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Banco de Recursos - Cumple 15 - Bianca 🤾‍♀️</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <h1>🎉 Banco de Recursos — Cumple de 15</h1>
+  <nav>
+    <button class="tab-btn active" data-tab="recursos">📋 Recursos</button>
+    <button class="tab-btn" data-tab="seguimiento">💰 Seguimiento</button>
+    <button class="tab-btn" data-tab="plan">🗓️ Plan</button>
+  </nav>
+</header>
+
+<main>
+  <!-- TAB RECURSOS -->
+  <section id="tab-recursos" class="tab active">
+    <div class="toolbar">
+      <input type="text" id="buscar" placeholder="🔍 Buscar por nombre, zona, teléfono...">
+      <select id="filtroRubro">
+        <option value="">Todos los rubros</option>
+      </select>
+      <select id="filtroEstado">
+        <option value="">Todos los estados</option>
+        <option>Nuevo</option>
+        <option>Contactado</option>
+        <option>Con presupuesto</option>
+        <option>Descartado</option>
+        <option>Contratado</option>
+      </select>
+      <label class="check"><input type="checkbox" id="ocultarDescartados" checked> Ocultar descartados</label>
+      <button class="btn-primary" id="btnNuevo">+ Agregar proveedor</button>
+    </div>
+    <div id="listaRecursos" class="cards"></div>
+  </section>
+
+  <!-- TAB SEGUIMIENTO -->
+  <section id="tab-seguimiento" class="tab">
+    <h2>Proveedores con precio averiguado</h2>
+    <div id="listaSeguimiento" class="cards"></div>
+  </section>
+
+  <!-- TAB PLAN -->
+  <section id="tab-plan" class="tab">
+    <div class="toolbar">
+      <button class="btn-primary" id="btnNuevoPlan">+ Agregar ítem al plan</button>
+    </div>
+    <div id="listaPlan" class="cards"></div>
+  </section>
+</main>
+
+<!-- MODAL PROVEEDOR -->
+<div class="modal" id="modalProveedor">
+  <div class="modal-content">
+    <h2 id="modalProvTitulo">Agregar proveedor</h2>
+    <form id="formProveedor">
+      <input type="hidden" name="ID">
+      <label>Nombre* <input name="Nombre" required></label>
+      <label>Rubro*
+        <select name="Rubro" required>
+          <option>Salón</option><option>Catering</option><option>Mozos</option>
+          <option>Decoración</option><option>Fotografía</option><option>Música/DJ</option>
+          <option>Torta</option><option>Vestimenta</option><option>Otros</option>
+        </select>
+      </label>
+      <label>Teléfono <input name="Telefono" placeholder="Ej: 3834123456"></label>
+      <label>Instagram <input name="Instagram" placeholder="@usuario o link"></label>
+      <label>Dirección <input name="Direccion"></label>
+      <label>Zona <input name="Zona" placeholder="Ej: Capital, Valle Viejo..."></label>
+      <label>Precio estimado <input name="PrecioEstimado" type="number"></label>
+      <label>Moneda
+        <select name="Moneda"><option>ARS</option><option>USD</option></select>
+      </label>
+      <label>Estado
+        <select name="Estado">
+          <option>Nuevo</option><option>Contactado</option>
+          <option>Con presupuesto</option><option>Descartado</option><option>Contratado</option>
+        </select>
+      </label>
+      <label>¿Averigüé precio?
+        <select name="AveriguePrecio"><option>No</option><option>Si</option></select>
+      </label>
+      <label>Qué me dijeron <textarea name="QueMeDijeron" rows="3"></textarea></label>
+      <label>Notas <textarea name="Notas" rows="2"></textarea></label>
+      <div class="modal-actions">
+        <button type="button" class="btn-sec" id="btnCancelarProv">Cancelar</button>
+        <button type="submit" class="btn-primary">Guardar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- MODAL PLAN -->
+<div class="modal" id="modalPlan">
+  <div class="modal-content">
+    <h2 id="modalPlanTitulo">Agregar ítem al plan</h2>
+    <form id="formPlan">
+      <input type="hidden" name="ID">
+      <label>Ítem* <input name="Item" required></label>
+      <label>Categoría
+        <select name="Categoria">
+          <option>Salón</option><option>Catering</option><option>Mozos</option>
+          <option>Decoración</option><option>Fotografía</option><option>Música</option>
+          <option>Torta</option><option>Vestimenta</option><option>Invitaciones</option><option>Otros</option>
+        </select>
+      </label>
+      <label>Responsable <input name="Responsable"></label>
+      <label>Fecha límite <input name="FechaLimite" type="date"></label>
+      <label>Estado
+        <select name="Estado"><option>Pendiente</option><option>En curso</option><option>Hecho</option></select>
+      </label>
+      <label>Prioridad
+        <select name="Prioridad"><option>Alta</option><option>Media</option><option>Baja</option></select>
+      </label>
+      <label>Notas <textarea name="Notas" rows="2"></textarea></label>
+      <div class="modal-actions">
+        <button type="button" class="btn-sec" id="btnCancelarPlan">Cancelar</button>
+        <button type="submit" class="btn-primary">Guardar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
